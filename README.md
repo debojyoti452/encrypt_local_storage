@@ -1,6 +1,6 @@
 # encrypt_db
 
-A new Flutter plugin project.
+A Swing Technologies Product.
 
 ## Getting Started
 

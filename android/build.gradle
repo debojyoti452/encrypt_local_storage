@@ -1,4 +1,4 @@
-group 'com.example.encrypt_db'
+group 'com.swing.encrypt_db.encrypt_db'
 version '1.0-SNAPSHOT'
 
 buildscript {

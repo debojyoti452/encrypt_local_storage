@@ -1,5 +1,5 @@
 name: encrypt_db
-description: A new Flutter plugin project.
+description: A Swing Technologies Product.
 version: 0.0.1
 homepage:
 
@@ -35,16 +35,10 @@ flutter:
   plugin:
     platforms:
       android:
-        package: com.example.encrypt_db
+        package: com.swing.encrypt_db.encrypt_db
         pluginClass: EncryptDbPlugin
       ios:
         pluginClass: EncryptDbPlugin
-      linux:
-        pluginClass: EncryptDbPlugin
-      macos:
-        pluginClass: EncryptDbPlugin
-      windows:
-        pluginClass: EncryptDbPluginCApi
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:

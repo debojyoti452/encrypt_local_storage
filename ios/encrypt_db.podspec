@@ -5,9 +5,9 @@
 Pod::Spec.new do |s|
   s.name             = 'encrypt_db'
   s.version          = '0.0.1'
-  s.summary          = 'A new Flutter plugin project.'
+  s.summary          = 'A Swing Technologies Product.'
   s.description      = <<-DESC
-A new Flutter plugin project.
+A Swing Technologies Product.
                        DESC
   s.homepage         = 'http://example.com'
   s.license          = { :file => '../LICENSE' }
