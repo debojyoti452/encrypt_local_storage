@@ -1,6 +1,7 @@
 package com.swing.encrypt_db.constants
 
 object AppConstants {
+    const val TAG = "EncryptDbLogs"
     const val CHANNEL_NAME = "com.swing.deb.encrypt_db"
 
     // Method names
