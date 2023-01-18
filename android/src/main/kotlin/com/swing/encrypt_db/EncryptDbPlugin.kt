@@ -1,4 +1,4 @@
-package com.swing.encrypt_db.encrypt_db
+package com.swing.encrypt_db
 
 import androidx.annotation.NonNull
 

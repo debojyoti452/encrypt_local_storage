@@ -35,7 +35,7 @@ flutter:
   plugin:
     platforms:
       android:
-        package: com.swing.encrypt_db.encrypt_db
+        package: com.swing.encrypt_db
         pluginClass: EncryptDbPlugin
       ios:
         pluginClass: EncryptDbPlugin
