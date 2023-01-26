@@ -1,23 +1,15 @@
 package com.swing.encrypt_db.core
 
-sealed class EncryptTask<T> {
-    suspend fun write() {
+import android.content.Context
+import com.swing.encrypt_db.utils.EncryptFileUtils
 
+open class EncryptTask constructor(private val context: Context) {
+
+    suspend fun write(key: String, value: String) {
+        EncryptFileUtils.writeEncryptedFile(context, key, value)
     }
 
-    suspend fun read() : T {
-        return Class.forName("T") as T
-    }
-
-    suspend fun delete() : Boolean {
-        return true
-    }
-
-    suspend fun contains(key: String) : Boolean {
-        return false
-    }
-
-    suspend fun clear() : Boolean {
-        return true
+    suspend fun read(key: String): String {
+        return EncryptFileUtils.readEncryptedFile(context, key)
     }
 }

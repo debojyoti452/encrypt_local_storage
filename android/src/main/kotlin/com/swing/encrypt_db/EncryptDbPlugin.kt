@@ -5,6 +5,7 @@ import androidx.annotation.NonNull
 import com.swing.encrypt_db.constants.AppConstants
 import com.swing.encrypt_db.constants.AppConstants.CHANNEL_NAME
 import com.swing.encrypt_db.constants.AppConstants.METHOD_GET_PLATFORM_VERSION
+import com.swing.encrypt_db.constants.AppConstants.METHOD_INITIATE
 import com.swing.encrypt_db.constants.AppConstants.METHOD_SET_DATA
 
 import io.flutter.embedding.engine.plugins.FlutterPlugin
@@ -31,6 +32,10 @@ class EncryptDbPlugin : FlutterPlugin, MethodCallHandler {
 
     override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
         when (call.method) {
+            METHOD_INITIATE -> {
+                encryptDb.init()
+                result.success(true)
+            }
             METHOD_SET_DATA -> {
                 val data = call.argument<String>(METHOD_SET_DATA)
                 result.success(data)

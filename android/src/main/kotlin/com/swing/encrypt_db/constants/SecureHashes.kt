@@ -1,6 +1,7 @@
 package com.swing.encrypt_db.constants
 
 object SecureHashes {
+    const val STORAGE_FILE_NAME = AppConstants.CHANNEL_NAME + "_storage_file"
     private const val secureHash64 = "743777217A25432A"
     private const val secureHash128 = "645267556B58703273357638792F423F"
     private const val secureHash256 =
