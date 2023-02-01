@@ -2,7 +2,7 @@ import 'package:encrypt_db/src/constants/app_constants.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
-import '../../encrypt_db_plugin.dart';
+import '../../encrypt_db.dart';
 import 'encrypt_db_platform_interface.dart';
 
 class MethodChannelEncryptDb extends EncryptDbPlatform {

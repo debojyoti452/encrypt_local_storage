@@ -1,4 +1,4 @@
-import 'package:encrypt_db/encrypt_db_plugin.dart';
+import 'package:encrypt_db/encrypt_db.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 import 'encrypt_db_method_channel.dart';

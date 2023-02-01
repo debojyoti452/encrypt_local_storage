@@ -1,4 +1,4 @@
-import '../../encrypt_db_plugin.dart';
+import '../../encrypt_db.dart';
 import 'encrypt_db_platform_interface.dart';
 
 class EncryptDb {
