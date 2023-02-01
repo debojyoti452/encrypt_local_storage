@@ -1,3 +1,5 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.swing.encrypt_db">
+<manifest xmlns:tools="http://schemas.android.com/tools"
+    package="com.swing.encrypt_db">
+
+    <uses-sdk tools:overrideLibrary="androidx.security.identity.credential" />
 </manifest>

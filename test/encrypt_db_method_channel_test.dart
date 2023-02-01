@@ -1,15 +1,17 @@
+import 'package:encrypt_db/src/core/encrypt_db_method_channel.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:encrypt_db/encrypt_db_method_channel.dart';
 
 void main() {
-  MethodChannelEncryptDb platform = MethodChannelEncryptDb();
+  MethodChannelEncryptDb platform =
+      MethodChannelEncryptDb();
   const MethodChannel channel = MethodChannel('encrypt_db');
 
   TestWidgetsFlutterBinding.ensureInitialized();
 
   setUp(() {
-    channel.setMockMethodCallHandler((MethodCall methodCall) async {
+    channel.setMockMethodCallHandler(
+        (MethodCall methodCall) async {
       return '42';
     });
   });
