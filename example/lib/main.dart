@@ -30,9 +30,8 @@ class _MyAppState extends State<MyApp> {
     String platformVersion;
 
     try {
-      platformVersion =
-          await _encryptDbPlugin.getPlatformVersion() ??
-              'Unknown platform version';
+      platformVersion = await _encryptDbPlugin.getPlatformVersion() ??
+          'Unknown platform version';
     } on PlatformException {
       platformVersion = 'Failed to get platform version.';
     }
@@ -44,7 +43,7 @@ class _MyAppState extends State<MyApp> {
     });
 
     try {
-      await _encryptDbPlugin.initializeEncryptDb();
+      _encryptDbPlugin.initializeEncryptDb();
     } on PlatformException {
       platformVersion = 'Failed to initialize encrypt db.';
     }
@@ -61,8 +60,7 @@ class _MyAppState extends State<MyApp> {
           child: Column(
             children: [
               Center(
-                child:
-                    Text('Running on: $_platformVersion\n'),
+                child: Text('Running on: $_platformVersion\n'),
               ),
               ElevatedButton(
                   onPressed: () {
@@ -75,8 +73,7 @@ class _MyAppState extends State<MyApp> {
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () async {
-                  final value =
-                      await _encryptDbPlugin.readData(
+                  final value = await _encryptDbPlugin.readData(
                     key: 'first_key2',
                     defaultValue: '',
                   );

@@ -6,10 +6,10 @@ class EncryptDb {
     return EncryptDbPlatform.instance.getPlatformVersion();
   }
 
-  Future<void> initializeEncryptDb({
+  void initializeEncryptDb({
     EncryptInformationModel? encryptInformationModel,
-  }) {
-    return EncryptDbPlatform.instance.initializeEncryptDb(
+  }) async {
+    EncryptDbPlatform.instance.initializeEncryptDb(
       encryptInformationModel: encryptInformationModel,
     );
   }
@@ -18,8 +18,7 @@ class EncryptDb {
     required String key,
     required T value,
   }) {
-    return EncryptDbPlatform.instance
-        .writeData(key: key, value: value);
+    return EncryptDbPlatform.instance.writeData(key: key, value: value);
   }
 
   Future<dynamic> readData<T>({
