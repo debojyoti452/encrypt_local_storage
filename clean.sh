@@ -1,0 +1,1 @@
+flutter clean && cd example && flutter clean && cd .. && flutter pub get
