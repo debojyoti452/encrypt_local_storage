@@ -1,3 +1,5 @@
 ## 0.0.1
-
-* TODO: Describe initial release.
+- Android Module - AES Encryption KeyStore
+- Initial release
+## 0.0.2
+- iOS Module - Keychain
