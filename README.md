@@ -1,6 +1,5 @@
-# encrypt_db [![pub package](https://img.shields.io/pub/v/encrypt_db.svg)](https://pub.dartlang.org/packages/encrypt_db)
-
-### Encrypt your database
+# Encrypt DB
+[![pub package](https://img.shields.io/pub/v/encrypt_db.svg)](https://pub.dartlang.org/packages/encrypt_db)
 
 ## Installation
 
@@ -53,5 +52,5 @@ Debojyoti Singha
 
 ## Contributors
 
-- [Debojyoti Singha] (Debojyoti Singha)
+- [Debojyoti Singha](https://debojyotisingha.com)
 
