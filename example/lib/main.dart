@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:encrypt_db/encrypt_db.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,36 +15,19 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String _platformVersion = 'Unknown';
   final _encryptDbPlugin = EncryptDb();
 
   @override
   void initState() {
     super.initState();
-    initPlatformState();
+    initialDb();
   }
 
-  // Platform messages are asynchronous, so we initialize in an async method.
-  Future<void> initPlatformState() async {
-    String platformVersion;
-
-    try {
-      platformVersion = await _encryptDbPlugin.getPlatformVersion() ??
-          'Unknown platform version';
-    } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
-    }
-
-    if (!mounted) return;
-
-    setState(() {
-      _platformVersion = platformVersion;
-    });
-
+  Future<void> initialDb() async {
     try {
       _encryptDbPlugin.initializeEncryptDb();
-    } on PlatformException {
-      platformVersion = 'Failed to initialize encrypt db.';
+    } catch (e) {
+      debugPrint('Error: $e');
     }
   }
 
@@ -54,28 +36,26 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Plugin example app'),
+          title: const Text('Encrypt DB example app'),
         ),
         body: SafeArea(
           child: Column(
             children: [
-              Center(
-                child: Text('Running on: $_platformVersion\n'),
-              ),
               ElevatedButton(
                   onPressed: () {
                     _encryptDbPlugin.writeData(
-                      key: 'first_key2',
-                      value: 'I am Debojyoti',
+                      key: 'secret_key',
+                      value: 'secret_value',
                     );
                   },
                   child: const Text('Write data')),
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () async {
-                  final value = await _encryptDbPlugin.readData(
-                    key: 'first_key2',
-                    defaultValue: '',
+                  final value =
+                      await _encryptDbPlugin.readData(
+                    key: 'secret_key',
+                    defaultValue: 'default_value',
                   );
                   debugPrint('value: $value');
                 },

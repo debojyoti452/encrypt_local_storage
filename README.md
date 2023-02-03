@@ -1,5 +1,17 @@
 # Encrypt DB
+
 [![pub package](https://img.shields.io/pub/v/encrypt_db.svg)](https://pub.dartlang.org/packages/encrypt_db)
+
+## Description
+
+A Flutter plugin to encrypt and decrypt data using AES-256 encryption algorithm.
+
+## Features
+
+- Android and iOS support
+- AES-256 encryption algorithm
+- Keychain support for iOS
+- KeyStore support for Android
 
 ## Installation
 
@@ -17,8 +29,8 @@ import 'package:encrypt_db/encrypt_db.dart';
 
 main() {
   var encrypt_db = new EncryptDb();
-  encrypt_db.write('secret_key', 'secret_value');
-  encrypt_db.read(key: 'secret_key', defaultValue: 'default_value');
+  encrypt_db.writeData(key: 'secret_key', value: 'secret_value');
+  encrypt_db.readData(key: 'secret_key', defaultValue: 'default_value');
   print('Hello world: ${encrypt_db.value}!');
 }
 ```
@@ -54,3 +66,10 @@ Debojyoti Singha
 
 - [Debojyoti Singha](https://debojyotisingha.com)
 
+## Coming Soon
+
+- [] Pluggable Database support
+- [] Encryption using RSA-2048 algorithm
+- [] MacOS support
+- [] Windows support
+- [] Linux support
