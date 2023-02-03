@@ -23,7 +23,7 @@ class EncryptFilePrefManager(
         secretHashKey = MasterKeys.getOrCreate(keyGenParameterSpec)
     }
 
-    private suspend fun writeEncryptedFile(key: String, data: String) =
+    private suspend fun writeEncryptedFile(key: String, data: String): String =
         suspendCoroutine {
             try {
                 val encryptedFile = encryptedFileManager
