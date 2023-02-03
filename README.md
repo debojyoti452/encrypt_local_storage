@@ -37,9 +37,7 @@ main() {
 
 ## Features and bugs
 
-Please file feature requests and bugs at the [issue tracker][tracker].
-
-[tracker]:
+Please file feature requests and bugs at the [issue tracker](https://github.com/debojyoti452/encrypt_local_storage/issues).
 
 ## License
 
@@ -68,8 +66,8 @@ Debojyoti Singha
 
 ## Coming Soon
 
-- [] Pluggable Database support
-- [] Encryption using RSA-2048 algorithm
-- [] MacOS support
-- [] Windows support
-- [] Linux support
+- [ ] Pluggable Database support
+- [ ] Encryption using RSA-2048 algorithm
+- [ ] MacOS support
+- [ ] Windows support
+- [ ] Linux support
