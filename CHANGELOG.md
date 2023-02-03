@@ -10,3 +10,8 @@
 ## 0.0.3
 
 - Bug Fixes - Android Module
+## 0.0.4
+- Contributors License Agreement
+- Bug Fixes - Android Module
+- Bug Fixes - iOS Module
+- Bug Fixes - Flutter Module
