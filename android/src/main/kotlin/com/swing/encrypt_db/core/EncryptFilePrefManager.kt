@@ -31,7 +31,7 @@ class EncryptFilePrefManager(
                 outputStream.write(data.toByteArray())
                 outputStream.close()
                 outputStream.flush()
-                it.resumeWith(Result.success(Unit))
+                it.resumeWith(Result.success("success"))
             } catch (e: Exception) {
                 e.printStackTrace()
                 it.resumeWith(Result.failure(e))
