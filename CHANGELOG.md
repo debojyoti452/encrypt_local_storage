@@ -22,3 +22,6 @@
 - Bug Fixes - Android Module
 - Bug Fixes - iOS Module
 - Documentation Updated - Example
+
+## 0.0.6
+- Readme Updated

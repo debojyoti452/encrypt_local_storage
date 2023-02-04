@@ -83,9 +83,10 @@ main() async {
 ```
 ## Important Note
 
-- This plugin requires async/await support. So, you need to use `Flutter 3` or higher.
+- This plugin requires async/await support. So, you need to use `Flutter 1.12.13+hotfix.5` or higher.
 - Android API level 28 or higher is required.
 - iOS 10.0 or higher is required.
+- Dart 3 Ready
 
 ## Features and bugs
 

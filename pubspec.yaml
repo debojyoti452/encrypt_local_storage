@@ -1,6 +1,6 @@
 name: encrypt_db
 description: A Swing Technologies Product.
-version: 0.0.5
+version: 0.0.6
 homepage: https://opensource.appworld.in
 
 environment:
