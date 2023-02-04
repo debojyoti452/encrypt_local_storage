@@ -9,4 +9,7 @@ interface IOperationHandler {
     fun readDouble(pairData: Pair<String, Any>, result: MethodChannel.Result)
     fun readBoolean(pairData: Pair<String, Any>, result: MethodChannel.Result)
     fun readLong(pairData: Pair<String, Any>, result: MethodChannel.Result)
+    fun readAll(result: MethodChannel.Result)
+    fun clearAll(result: MethodChannel.Result)
+    fun delete(key: String, result: MethodChannel.Result)
 }

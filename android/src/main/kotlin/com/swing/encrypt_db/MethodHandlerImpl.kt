@@ -1,8 +1,11 @@
 package com.swing.encrypt_db
 
 import com.swing.encrypt_db.constants.AppConstants
+import com.swing.encrypt_db.constants.AppConstants.METHOD_CLEAR_ALL
+import com.swing.encrypt_db.constants.AppConstants.METHOD_DELETE
 import com.swing.encrypt_db.constants.AppConstants.METHOD_GET_PLATFORM_VERSION
 import com.swing.encrypt_db.constants.AppConstants.METHOD_INITIATE
+import com.swing.encrypt_db.constants.AppConstants.METHOD_READ_ALL
 import com.swing.encrypt_db.constants.AppConstants.METHOD_READ_DATA
 import com.swing.encrypt_db.constants.AppConstants.METHOD_WRITE_DATA
 import com.swing.encrypt_db.constants.EncryptDbErrorCodes
@@ -114,6 +117,24 @@ class MethodHandlerImpl constructor(
                         )
                     }
                 }
+            }
+            METHOD_READ_ALL -> {
+                encryptDb.readAll(result)
+            }
+            METHOD_CLEAR_ALL -> {
+                encryptDb.clearAll(result)
+            }
+            METHOD_DELETE -> {
+                val receivedData = call.argument<Map<String, Any>>(METHOD_DELETE)
+                if (receivedData == null) {
+                    result.error(
+                        EncryptDbErrorCodes.invalidArgumentError.first,
+                        EncryptDbErrorCodes.invalidArgumentError.second,
+                        null
+                    )
+                    return
+                }
+                encryptDb.delete(receivedData["key"] as String, result)
             }
             METHOD_GET_PLATFORM_VERSION -> {
                 result.success("Android ${android.os.Build.VERSION.RELEASE}")

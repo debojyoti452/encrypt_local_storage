@@ -96,6 +96,20 @@ class EncryptSharedPrefManager constructor(
         }
     }
 
+    suspend fun readAllSharedPref(): Map<String, *> = suspendCoroutine {
+        it.resumeWith(Result.success(encryptedSharedPreferences.all))
+    }
+
+    suspend fun clearAllSharedPref(): Boolean = suspendCoroutine {
+        encryptedSharedPreferences.edit().clear().apply()
+        it.resumeWith(Result.success(true))
+    }
+
+    suspend fun deleteSharedPref(key: String): Boolean = suspendCoroutine {
+        encryptedSharedPreferences.edit().remove(key).apply()
+        it.resumeWith(Result.success(true))
+    }
+
     private fun getInstanceEncryptedSharedPreferences(context: Context): SharedPreferences {
         return EncryptedSharedPreferences.create(
             "${encryptInformationModel.version}_${encryptInformationModel.fileName}",

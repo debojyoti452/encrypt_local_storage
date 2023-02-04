@@ -147,6 +147,58 @@ class EncryptDb constructor(
         }
     }
 
+    override fun readAll(result: MethodChannel.Result) {
+        coroutineScope.launch {
+            try {
+                val fetchedData = withContext(Dispatchers.Default) {
+                    encryptSharedPrefManager.readAllSharedPref()
+                }
+                result.success(fetchedData)
+            } catch (e: Exception) {
+                e.printStackTrace()
+                result.error("ERROR", e.message, null)
+            }
+        }
+    }
+
+    override fun delete(key: String, result: MethodChannel.Result) {
+        coroutineScope.launch {
+            try {
+                val fetchedData = withContext(Dispatchers.Default) {
+                    encryptSharedPrefManager.deleteSharedPref(key)
+                }
+                val data = if (Result.success(fetchedData).isSuccess) {
+                    fetchedData
+                } else {
+                    "NOT_FOUND"
+                }
+                result.success(data)
+            } catch (e: Exception) {
+                e.printStackTrace()
+                result.error("ERROR", e.message, null)
+            }
+        }
+    }
+
+    override fun clearAll(result: MethodChannel.Result) {
+        coroutineScope.launch {
+            try {
+                val fetchedData = withContext(Dispatchers.Default) {
+                    encryptSharedPrefManager.clearAllSharedPref()
+                }
+                val data = if (Result.success(fetchedData).isSuccess) {
+                    fetchedData
+                } else {
+                    "NOT_FOUND"
+                }
+                result.success(data)
+            } catch (e: Exception) {
+                e.printStackTrace()
+                result.error("ERROR", e.message, null)
+            }
+        }
+    }
+
     // check whether encrypt instance is initialized or not
     fun isInitialized(): Boolean {
         return ::encryptSharedPrefManager.isInitialized
