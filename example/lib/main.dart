@@ -16,6 +16,8 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   final _encryptDbPlugin = EncryptDb();
+  final Map<String, dynamic> _testPrintMap =
+      <String, dynamic>{};
 
   @override
   void initState() {
@@ -26,8 +28,49 @@ class _MyAppState extends State<MyApp> {
   Future<void> initialDb() async {
     try {
       _encryptDbPlugin.initializeEncryptDb();
+      _encryptDbPlugin.write(key: 'key0', value: 452);
     } catch (e) {
       debugPrint('Error: $e');
+    }
+  }
+
+  void _runManualTest() async {
+    try {
+      var result = await _encryptDbPlugin.readAll();
+      debugPrint('result0: $result');
+      _testPrintMap['result0'] = result;
+      await _encryptDbPlugin.clearAll();
+      debugPrint('Clear all');
+      result = await _encryptDbPlugin.readAll();
+      debugPrint('result1: $result');
+      _testPrintMap['result1'] = result;
+      _encryptDbPlugin.write(key: 'key1', value: 'value1');
+      debugPrint('Write key1');
+      _testPrintMap['Write key1'] = 'Write key1';
+      result = await _encryptDbPlugin.read(
+          key: 'key1', defaultValue: 'default_value');
+      debugPrint('result2: $result');
+      _testPrintMap['result2'] = result;
+      _encryptDbPlugin.write(key: 'key2', value: 'value2');
+      debugPrint('Write key2');
+      _testPrintMap['Write key2'] = 'Write key2';
+      result = await _encryptDbPlugin.readAll();
+      debugPrint('result3: $result');
+      _testPrintMap['result3'] = result;
+      _encryptDbPlugin.clear(key: 'key1');
+      debugPrint('Delete key1');
+      _testPrintMap['Delete key1'] = 'Delete key1';
+      result = await _encryptDbPlugin.readAll();
+      debugPrint('result4: $result');
+      _testPrintMap['result4'] = result;
+      _encryptDbPlugin.clearAll();
+      debugPrint('Clear all');
+      _testPrintMap['Clear all'] = 'Clear all';
+    } catch (e) {
+      debugPrint('Error: $e');
+    } finally {
+      debugPrint('Test print map: $_testPrintMap');
+      setState(() {});
     }
   }
 
@@ -41,25 +84,25 @@ class _MyAppState extends State<MyApp> {
         body: SafeArea(
           child: Column(
             children: [
-              ElevatedButton(
-                  onPressed: () {
-                    _encryptDbPlugin.writeData(
-                      key: 'secret_key',
-                      value: 'secret_value',
-                    );
-                  },
-                  child: const Text('Write data')),
-              const SizedBox(height: 20),
+              ListView.builder(
+                shrinkWrap: true,
+                itemCount: _testPrintMap.length,
+                itemBuilder:
+                    (BuildContext context, int index) {
+                  final key =
+                      _testPrintMap.keys.elementAt(index);
+                  final value = _testPrintMap[key];
+                  return Container(
+                    margin: const EdgeInsets.all(8),
+                    child: Text('log: $key: $value'),
+                  );
+                },
+              ),
               ElevatedButton(
                 onPressed: () async {
-                  final value =
-                      await _encryptDbPlugin.readData(
-                    key: 'secret_key',
-                    defaultValue: 'default_value',
-                  );
-                  debugPrint('value: $value');
+                  _runManualTest();
                 },
-                child: const Text('Read data'),
+                child: const Text('Run Test'),
               ),
             ],
           ),

@@ -42,4 +42,27 @@ class EncryptDb : IOperationHandler {
             debugPrint("failed")
         }
     }
+
+    func readAll(result: @escaping FlutterResult) {
+        let data = keychainSwift.allKeys
+        result(data)
+    }
+
+    func clearAll(result: @escaping FlutterResult) {
+        let data = keychainSwift.clear()
+        if (data) {
+            debugPrint("success")
+        } else {
+            debugPrint("failed")
+        }
+    }
+
+    func clear(key: String, result: @escaping FlutterResult) {
+        let data = keychainSwift.delete(key)
+        if (data) {
+            debugPrint("success")
+        } else {
+            debugPrint("failed")
+        }
+    }
 }

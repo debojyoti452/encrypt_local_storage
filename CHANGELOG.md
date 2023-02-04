@@ -15,3 +15,10 @@
 - Bug Fixes - Android Module
 - Bug Fixes - iOS Module
 - Bug Fixes - Flutter Module
+
+## 0.0.5
+- Feature Added - Read All, Clear All, Clear Key
+- API Changes - Read, Write
+- Bug Fixes - Android Module
+- Bug Fixes - iOS Module
+- Documentation Updated - Example

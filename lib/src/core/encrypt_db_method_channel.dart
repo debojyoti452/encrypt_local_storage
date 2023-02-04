@@ -11,15 +11,6 @@ class MethodChannelEncryptDb extends EncryptDbPlatform {
       const MethodChannel(AppConstants.CHANNEL_NAME);
 
   @override
-  Future<String?> getPlatformVersion() async {
-    final version =
-        await methodChannel.invokeMethod<String>(
-      AppConstants.METHOD_GET_PLATFORM_VERSION,
-    );
-    return version;
-  }
-
-  @override
   Future<void> initializeEncryptDb({
     EncryptInformationModel? encryptInformationModel,
   }) {
@@ -34,7 +25,7 @@ class MethodChannelEncryptDb extends EncryptDbPlatform {
   }
 
   @override
-  void writeData<T>({
+  void write<T>({
     required String key,
     required T value,
   }) async {
@@ -50,7 +41,7 @@ class MethodChannelEncryptDb extends EncryptDbPlatform {
   }
 
   @override
-  Future<dynamic> readData<T>({
+  Future<dynamic> read<T>({
     required String key,
     required T defaultValue,
   }) async {
@@ -64,5 +55,34 @@ class MethodChannelEncryptDb extends EncryptDbPlatform {
       },
     );
     return value;
+  }
+
+  @override
+  Future<dynamic> readAll() {
+    final result = methodChannel.invokeMethod(
+      AppConstants.METHOD_READ_ALL,
+    );
+    return result;
+  }
+
+  @override
+  Future<dynamic> clear({required String key}) {
+    final result = methodChannel.invokeMethod(
+      AppConstants.METHOD_DELETE,
+      {
+        AppConstants.METHOD_DELETE: {
+          'key': key,
+        }
+      },
+    );
+    return result;
+  }
+
+  @override
+  Future<dynamic> clearAll() {
+    final result = methodChannel.invokeMethod(
+      AppConstants.METHOD_CLEAR_ALL,
+    );
+    return result;
   }
 }

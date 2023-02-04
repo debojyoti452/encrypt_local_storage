@@ -45,6 +45,18 @@ public class SwiftEncryptDbPlugin: NSObject, FlutterPlugin {
             let key = data["key"] as! String
             let value = data["value"] as! String
             encryptDb.write(key: key, value: value, result: result)
+
+        case Constants.METHOD_READ_ALL:
+            encryptDb.readAll(result: result)
+
+        case Constants.METHOD_CLEAR_ALL:
+            encryptDb.clearAll(result: result)
+
+        case Constants.METHOD_DELETE:
+            let arguments = call.arguments as! [String: Any?]
+            let data = arguments[Constants.METHOD_DELETE] as! [String: Any]
+            let key = data["key"] as! String
+            encryptDb.clear(key: key, result: result)
         default:
             result(FlutterMethodNotImplemented)
         }
