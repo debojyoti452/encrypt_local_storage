@@ -3,7 +3,6 @@ package com.swing.encrypt_db
 import com.swing.encrypt_db.constants.AppConstants
 import com.swing.encrypt_db.constants.AppConstants.METHOD_CLEAR_ALL
 import com.swing.encrypt_db.constants.AppConstants.METHOD_DELETE
-import com.swing.encrypt_db.constants.AppConstants.METHOD_GET_PLATFORM_VERSION
 import com.swing.encrypt_db.constants.AppConstants.METHOD_INITIATE
 import com.swing.encrypt_db.constants.AppConstants.METHOD_READ_ALL
 import com.swing.encrypt_db.constants.AppConstants.METHOD_READ_DATA
@@ -135,9 +134,6 @@ class MethodHandlerImpl constructor(
                     return
                 }
                 encryptDb.delete(receivedData["key"] as String, result)
-            }
-            METHOD_GET_PLATFORM_VERSION -> {
-                result.success("Android ${android.os.Build.VERSION.RELEASE}")
             }
             else -> result.notImplemented()
         }

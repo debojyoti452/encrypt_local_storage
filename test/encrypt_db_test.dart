@@ -8,10 +8,8 @@ import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 class MockEncryptDbPlatform
     with MockPlatformInterfaceMixin
     implements EncryptDbPlatform {
-  var _pairData = const Pair<String, dynamic>('', '');
-
-  @override
-  Future<String?> getPlatformVersion() => Future.value('42');
+  Pair<String, dynamic>? _pairData =
+      const Pair<String, dynamic>('', '');
 
   @override
   void initializeEncryptDb({
@@ -19,15 +17,15 @@ class MockEncryptDbPlatform
   }) {}
 
   @override
-  Future readData<T>({
+  Future read<T>({
     required String key,
     required T defaultValue,
   }) {
-    return Future.value(_pairData.second);
+    return Future.value(_pairData?.second);
   }
 
   @override
-  void writeData<T>({
+  void write<T>({
     required String key,
     required T value,
   }) {
@@ -41,30 +39,49 @@ class MockEncryptDbPlatform
       _pairData = Pair(key, value as bool);
     }
   }
+
+  @override
+  Future<dynamic> clearAll() {
+    _pairData = null;
+    return Future.value(_pairData);
+  }
+
+  @override
+  Future<dynamic> clear({required String key}) {
+    if (_pairData?.first == key) {
+      _pairData = null;
+      return Future.value(_pairData);
+    }
+    return Future.value(_pairData);
+  }
+
+  @override
+  Future<dynamic> readAll() {
+    if (_pairData?.first.isEmpty ?? false) {
+      return Future.value(null);
+    }
+    return Future.value(_pairData);
+  }
 }
 
 void main() {
-  final EncryptDbPlatform initialPlatform = EncryptDbPlatform.instance;
+  final EncryptDbPlatform initialPlatform =
+      EncryptDbPlatform.instance;
 
-  test('$MethodChannelEncryptDb is the default instance', () {
-    expect(initialPlatform, isInstanceOf<MethodChannelEncryptDb>());
-  });
-
-  test('getPlatformVersion', () async {
-    EncryptDb encryptDbPlugin = EncryptDb();
-    MockEncryptDbPlatform fakePlatform = MockEncryptDbPlatform();
-    EncryptDbPlatform.instance = fakePlatform;
-
-    expect(await encryptDbPlugin.getPlatformVersion(), '42');
+  test('$MethodChannelEncryptDb is the default instance',
+      () {
+    expect(initialPlatform,
+        isInstanceOf<MethodChannelEncryptDb>());
   });
 
   test('positive write test', () async {
     EncryptDb encryptDbPlugin = EncryptDb();
-    MockEncryptDbPlatform fakePlatform = MockEncryptDbPlatform();
+    MockEncryptDbPlatform fakePlatform =
+        MockEncryptDbPlatform();
     EncryptDbPlatform.instance = fakePlatform;
-    encryptDbPlugin.writeData(key: 'key', value: 'value1');
-    var data =
-        await encryptDbPlugin.readData(key: 'key', defaultValue: 'value');
+    encryptDbPlugin.write(key: 'key', value: 'value1');
+    var data = await encryptDbPlugin.read(
+        key: 'key', defaultValue: 'value');
     expect(data, 'value1');
   });
 

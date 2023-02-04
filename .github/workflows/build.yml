@@ -7,12 +7,9 @@ name: Build Project
 
 on:
   push:
-     branches:
-      - main
-  pull_request:
     branches:
       - main
-      - develop
+  pull_request:
 
 jobs:
   build:
@@ -32,7 +29,7 @@ jobs:
           channel: 'stable'
           flutter-version: '3.3.10'
           cache: true
-            # Get flutter dependencies.
+          # Get flutter dependencies.
       - run: flutter clean
 
       # Get flutter dependencies.
@@ -40,4 +37,7 @@ jobs:
 
       # Statically analyze the Dart code for any errors.
       - run: flutter analyze .
+
+      # Run the tests.
+      - run: flutter test
           

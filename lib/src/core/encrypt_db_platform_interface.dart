@@ -9,7 +9,8 @@ abstract class EncryptDbPlatform extends PlatformInterface {
 
   static final Object _token = Object();
 
-  static EncryptDbPlatform _instance = MethodChannelEncryptDb();
+  static EncryptDbPlatform _instance =
+      MethodChannelEncryptDb();
 
   static EncryptDbPlatform get instance => _instance;
 
@@ -18,27 +19,43 @@ abstract class EncryptDbPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<String?> getPlatformVersion() {
-    throw UnimplementedError('platformVersion() has not been implemented.');
-  }
-
   void initializeEncryptDb({
     EncryptInformationModel? encryptInformationModel,
   }) async {
-    throw UnimplementedError('initializeEncryptDb() has not been implemented.');
+    throw UnimplementedError(
+        'initializeEncryptDb() has not been implemented.');
   }
 
-  void writeData<T>({
+  void write<T>({
     required String key,
     required T value,
   }) {
-    throw UnimplementedError('writeData() has not been implemented.');
+    throw UnimplementedError(
+        'writeData() has not been implemented.');
   }
 
-  Future<dynamic> readData<T>({
+  Future<dynamic> read<T>({
     required String key,
     required T defaultValue,
   }) {
-    throw UnimplementedError('readData() has not been implemented.');
+    throw UnimplementedError(
+        'readData() has not been implemented.');
+  }
+
+  Future<dynamic> readAll() {
+    throw UnimplementedError(
+        'readAll() has not been implemented.');
+  }
+
+  Future<dynamic> clear({
+    required String key,
+  }) {
+    throw UnimplementedError(
+        'delete() has not been implemented.');
+  }
+
+  Future<dynamic> clearAll() {
+    throw UnimplementedError(
+        'clearAll() has not been implemented.');
   }
 }

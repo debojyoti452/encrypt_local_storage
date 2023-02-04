@@ -4,15 +4,16 @@
 
 ## Description
 
-A Flutter plugin to encrypt and decrypt data using AES-256 encryption algorithm.
+A Flutter plugin to encrypt and decrypt data using AES-256 encryption algorithm. 
+You can use this plugin to store sensitive data in the local storage. 
+eg. User credentials, API keys, Bearer Token etc.
 
-## Features
+## Why this plugin?
 
-- `String`, `int`, `double`, and `bool` data types support
-- Android and iOS support
-- AES-256 encryption algorithm
-- Keychain support for iOS
-- KeyStore support for Android
+- This plugin uses AES-256 encryption algorithm to encrypt and decrypt data.
+- This plugin uses Keychain for iOS and KeyStore for Android to store the encryption key.
+- This plugin can store `String`, `int`, `double`, and `bool` data types.
+
 
 ## Installation
 
@@ -20,21 +21,70 @@ Add this line to your application's pubspec.yaml file:
 
 ```yaml
 dependencies:
-  encrypt_db: ^0.0.4
+  encrypt_db: ^0.0.5
 ```
 
-## Usage
+## Getting Started
+### Read and Write
+
+```dart
+_encrytDbPlugin.write(key: 'key1', value: 'value1'); /// Return nothing, but write a value
+_encrytDbPlugin.read(key: 'key1', defaultValue: ''); /// Return a value of type defaultValue type
+_encrytDbPlugin.readAll(); /// Return a Map<String, dynamic> 
+```
+
+### ClearAll and Clear Specific Key
+
+```dart
+_encrytDbPlugin.clearAll(); /// Return nothing, but clear all the data
+_encrytDbPlugin.clear(key: 'key1'); /// Return nothing, but clear a specific key
+```
+
+## Example
 
 ```dart
 import 'package:encrypt_db/encrypt_db.dart';
 
-main() {
-  var encrypt_db = new EncryptDb();
-  encrypt_db.writeData(key: 'secret_key', value: 'secret_value');
-  encrypt_db.readData(key: 'secret_key', defaultValue: 'default_value');
-  print('Hello world: ${encrypt_db.value}!');
+main() async {
+  var _encryptDbPlugin = new EncryptDb();
+  
+  var result = await _encryptDbPlugin.readAll();
+  debugPrint('result0: $result');
+  
+  await _encryptDbPlugin.clearAll();
+  debugPrint('Clear all');
+  
+  result = await _encryptDbPlugin.readAll();
+  debugPrint('result1: $result');
+  
+  _encryptDbPlugin.write(key: 'key1', value: 'value1');
+  debugPrint('Write key1');
+  
+  result = await _encryptDbPlugin.read(
+      key: 'key1', defaultValue: 'default_value');
+  debugPrint('result2: $result');
+  
+  _encryptDbPlugin.write(key: 'key2', value: 'value2');
+  debugPrint('Write key2');
+  
+  result = await _encryptDbPlugin.readAll();
+  debugPrint('result3: $result');
+  
+  _encryptDbPlugin.clear(key: 'key1');
+  debugPrint('Delete key1');
+  
+  result = await _encryptDbPlugin.readAll();
+  debugPrint('result4: $result');
+  
+  _encryptDbPlugin.clearAll();
+  debugPrint('Clear all');
 }
 ```
+## Important Note
+
+- This plugin requires async/await support. So, you need to use `Flutter 3` or higher.
+- Android API level 28 or higher is required.
+- iOS 10.0 or higher is required.
 
 ## Features and bugs
 

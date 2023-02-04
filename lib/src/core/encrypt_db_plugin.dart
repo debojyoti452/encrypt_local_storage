@@ -2,10 +2,6 @@ import '../../encrypt_db.dart';
 import 'encrypt_db_platform_interface.dart';
 
 class EncryptDb {
-  Future<String?> getPlatformVersion() {
-    return EncryptDbPlatform.instance.getPlatformVersion();
-  }
-
   void initializeEncryptDb({
     EncryptInformationModel? encryptInformationModel,
   }) async {
@@ -14,18 +10,33 @@ class EncryptDb {
     );
   }
 
-  void writeData<T>({
+  void write<T>({
     required String key,
     required T value,
   }) {
-    return EncryptDbPlatform.instance.writeData(key: key, value: value);
+    return EncryptDbPlatform.instance
+        .write(key: key, value: value);
   }
 
-  Future<dynamic> readData<T>({
+  Future<dynamic> read<T>({
     required String key,
     required T defaultValue,
   }) {
     return EncryptDbPlatform.instance
-        .readData(key: key, defaultValue: defaultValue);
+        .read(key: key, defaultValue: defaultValue);
+  }
+
+  Future<dynamic> readAll() {
+    return EncryptDbPlatform.instance.readAll();
+  }
+
+  Future<dynamic> clear({
+    required String key,
+  }) {
+    return EncryptDbPlatform.instance.clear(key: key);
+  }
+
+  Future<dynamic> clearAll() {
+    return EncryptDbPlatform.instance.clearAll();
   }
 }

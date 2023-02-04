@@ -18,4 +18,10 @@ protocol IOperationHandler {
     func getDouble(key: String, result: @escaping FlutterResult)
 
     func write(key: String, value: String, result: @escaping FlutterResult)
+
+    func readAll(result: @escaping FlutterResult)
+
+    func clear(key: String, result: @escaping FlutterResult)
+
+    func clearAll(result: @escaping FlutterResult)
 }
