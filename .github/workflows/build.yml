@@ -6,11 +6,20 @@
 name: Build Project
 
 on:
+  workflow_dispatch:
+    inputs:
+      flavor:
+        description: 'Are you sure to run?'
+        required: false
+        default: 'Run all'
   push:
     branches:
       - main
   pull_request:
-
+    branches:
+      - main
+      - develop
+      - ED-*
 jobs:
   build:
     runs-on: ubuntu-latest
