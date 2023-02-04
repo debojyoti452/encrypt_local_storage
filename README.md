@@ -1,6 +1,7 @@
 # Encrypt DB
 
 [![pub package](https://img.shields.io/pub/v/encrypt_db.svg)](https://pub.dartlang.org/packages/encrypt_db)
+[![Build Project](https://github.com/debojyoti452/encrypt_local_storage/actions/workflows/build.yml/badge.svg)](https://github.com/debojyoti452/encrypt_local_storage/actions/workflows/build.yml)
 
 ## Description
 
