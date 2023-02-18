@@ -53,8 +53,6 @@ class EncryptSharedPrefManager constructor(
 
         val keyGenParameterSpec = MasterKeys.AES256_GCM_SPEC
         secretHashKey = MasterKeys.getOrCreate(keyGenParameterSpec)
-
-        Log.d(AppConstants.TAG, "mainKeyAlias: $secretHashKey")
     }
 
     suspend fun writeSharedPref(key: String, value: Any) = suspendCoroutine<Unit> {
