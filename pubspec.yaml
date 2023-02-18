@@ -1,6 +1,6 @@
 name: encrypt_db
 description: LocalStorage for Flutter with encryption like SharedPreferences
-version: 0.0.7
+version: 0.0.8
 homepage: https://opensource.appworld.in
 repository: https://github.com/debojyoti452/encrypt_local_storage.git
 issue_tracker: https://github.com/debojyoti452/encrypt_local_storage/issues

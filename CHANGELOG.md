@@ -29,3 +29,7 @@
 ## 0.0.7
 - Pubspec Updated
 - Readme Updated
+
+## 0.0.8
+- Bug Fixes - Android Module
+- Clean Up - Android Module
