@@ -25,3 +25,7 @@
 
 ## 0.0.6
 - Readme Updated
+
+## 0.0.7
+- Pubspec Updated
+- Readme Updated

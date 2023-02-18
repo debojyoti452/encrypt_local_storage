@@ -22,7 +22,7 @@ Add this line to your application's pubspec.yaml file:
 
 ```yaml
 dependencies:
-  encrypt_db: ^0.0.5
+  encrypt_db: latest_version
 ```
 
 ## Getting Started
