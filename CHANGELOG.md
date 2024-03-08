@@ -33,3 +33,9 @@
 ## 0.0.8
 - Bug Fixes - Android Module
 - Clean Up - Android Module
+
+## 0.0.9
+- Bug Fixes - Android Module
+- Version Update - Android Module
+- Flutter Module - Version Update
+- Support Flutter 3.19.0

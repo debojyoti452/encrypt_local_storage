@@ -59,9 +59,6 @@ class EncryptDb constructor(
                         encryptInformationModel = encryptInformationModel,
                     )
                 }
-                else -> {
-                    throw Exception("Invalid encrypt method type")
-                }
             }
         } catch (e: Exception) {
             e.printStackTrace()

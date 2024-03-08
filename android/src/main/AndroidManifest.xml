@@ -26,8 +26,7 @@
   ~  */
   -->
 
-<manifest xmlns:tools="http://schemas.android.com/tools"
-    package="com.swing.encrypt_db">
+<manifest xmlns:tools="http://schemas.android.com/tools">
 
     <uses-sdk tools:overrideLibrary="androidx.security.identity.credential" />
 </manifest>

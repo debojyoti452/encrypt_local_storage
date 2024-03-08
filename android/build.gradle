@@ -26,7 +26,8 @@ apply plugin: 'kotlin-android'
 apply plugin: 'org.jetbrains.kotlin.android'
 
 android {
-    compileSdkVersion 33
+    compileSdkVersion 34
+    namespace 'com.swing.encrypt_db'
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
